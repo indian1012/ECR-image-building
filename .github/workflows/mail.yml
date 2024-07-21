@@ -22,7 +22,7 @@ jobs:
           VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
         run: |
           echo "Fetching AWS credentials from Vault..."
-          CREDS=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" $VAULT_ADDR/v1/aws/creds/my-role | jq -r '.data')
+          CREDS=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" $VAULT_ADDR/v1/aws/creds/VaultRole | jq -r '.data')
           echo "AWS_ACCESS_KEY_ID=$(echo $CREDS | jq -r '.access_key')" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=$(echo $CREDS | jq -r '.secret_key')" >> $GITHUB_ENV
 
