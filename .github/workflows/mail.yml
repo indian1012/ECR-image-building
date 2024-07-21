@@ -32,7 +32,7 @@ jobs:
       - name: Get AWS credentials from Vault
         id: get-aws-creds
         run: |
-          aws_creds=$(vault kv get -format=json secret/aws/ecr | jq -r .data)
+          aws_creds=$(vault read get -format=json aws/creds/VaultRole | jq -r .data)
           echo "::set-output name=aws_access_key_id::$(echo $aws_creds | jq -r .access_key_id)"
           echo "::set-output name=aws_secret_access_key::$(echo $aws_creds | jq -r .secret_access_key)"
 
