@@ -1,4 +1,4 @@
-name: Push Docker image to ECR
+name: Push Docker image to ECR using dynamic token
 
 on:
   push:
